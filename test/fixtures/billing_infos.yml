@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  cardnumber: MyString
+  cardname: MyString
+  expiration: 2013-03-02
+  securitycode: MyString
+  address: 
+
+two:
+  cardnumber: MyString
+  cardname: MyString
+  expiration: 2013-03-02
+  securitycode: MyString
+  address: 
