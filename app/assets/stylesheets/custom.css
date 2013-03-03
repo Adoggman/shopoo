@@ -46,7 +46,7 @@ header h1{
 #logo { display: inline; float: left; padding-top: 22px; width: 258px; font-size: 0; line-height: 0; }
 #logo a { display: block; width: 258px; height: 56px; text-indent: -4000px; background: url(/assets/logo.png) no-repeat 0 0;  }
 
-#navigation-bar { position: relative; z-index: 20; padding-left: 6px; margin-top:-20px; height: 50px; background-color: black}
+#navigation-bar { position: relative; z-index: 20; padding-left: 6px; margin-top:-20px; height: 50px; background: url(/assets/navigation.png) no-repeat 0 0; }
 #navigation-bar ul li { position: relative; list-style: none; display: inline; float: left; line-height: 48px; text-transform: uppercase; }
 #navigation-bar ul li { font-family: 'Trebuchet MS', arial, sans-serif; font-size: 16px; text-shadow: 0 -1px #000; }
 #navigation-bar ul li a { position: relative; display: block; padding: 0 32px 0 20px; float: left; color: #fff; }
