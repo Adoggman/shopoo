@@ -1,6 +1,3 @@
-<div style="text-align: center">
-<h1>Items#browse</h1>
-<p>Find me in app/views/items/browse.html.erb</p>
 <% @items.each do |item| %>
     <div style="border-style: groove; border-width: 5px; text-align: center; width: 300px; margin-left:auto; margin-right:auto">
         <p><%= "Item Name: #{item.name}" %></p>
@@ -9,5 +6,4 @@
         <p><%= "Item Url: #{item.url}" %></p>
         <%= link_to "Edit", :controller => "items", :action => "edit", :id => item.id %>
     </div>
-</div>
 <% end %>

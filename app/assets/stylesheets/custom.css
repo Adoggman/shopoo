@@ -1,0 +1,85 @@
+
+body {
+    font-size: 12px;
+    font-family: arial, sans-serif;
+    color: #8f8f8f;
+    background: url(/assets/dark_mosaic.png) repeat;
+}
+
+header {
+    position: relative;
+    padding: 0 0 29px 16px;
+    width: 922px;
+}
+
+header h1{
+    font-family: "Dax Regular";
+    font-size: 300%;
+    color: #fff;
+}
+
+.container{ padding: 5px 20px 0 20px; width: 938px; margin: 0 auto; background: #efefef; }
+
+#account-options { display: inline; float: right; margin-left:10px}
+#account-options ul { list-style: none; display: inline; float: right; }
+#account-options ul li { display: inline; float: left; padding-left: 5px; line-height: 28px; font-family: 'Trebuchet MS', arial, helvetica, sans-serif; font-size: 11px; font-weight: bold; }
+#account-options ul li a { display: block; float: left; color: #707070; text-transform: uppercase; background: url(/assets/account-options-bg.png) repeat-x 0 0; }
+#account-options ul li a:hover { text-decoration: none; }
+#account-options ul li a.account { padding-right: 15px; margin-left: 7px; }
+#account-options ul li a.account span { display: block; float: left; padding-right: 12px; width: 6px; height: 20px; margin-top: 4px; background: url(/assets/user-icon.png) no-repeat 0 0; }
+#account-options ul li a.cart { padding: 0 8px 0 8px; }
+#account-options ul li a.cart span { display: block; float: left; padding-right: 5px; width: 16px; height: 13px; margin-top: 7px; background: url(/assets/shopping-cart.png) no-repeat 0 0; }
+#account-options ul li a.checkout { position: relative; padding: 0 14px 0 8px; }
+#account-options ul li a.checkout span { display: block; float: left; padding-right: 12px; width: 6px; height: 20px; margin-top: 4px; background: url(/assets/checkmark.png) no-repeat 0 0; }
+
+
+.search-container { width: 170px; background: url(/assets/search.png) no-repeat 0 0; }
+
+#search { position: absolute; top: 33px; right: 0; }
+#search .field { display: inline; float: left; padding-left: 5px;  width: 127px; background: none; border: 0; }
+#search .field { font-family: 'Trebuchet MS', arial, helvetica, sans-serif; color: #6e6e6e; }
+#search .submit-button { display: inline; float: right; width: 27px; height: 27px; border: 0; background: none; cursor: pointer; }
+#search a.advanced-search { float: right; margin-top: 2px; padding: 0 1px 0 13px; background: url(/assets/advanced-search.png) no-repeat 0 70%; }
+#search a.advanced-search { font-family: Tahoma, arial, helvetica, sans-serif; font-size: 11px; line-height: 18px; color: #989895; text-decoration: underline; }
+#search a.advanced-search:hover { text-decoration: none; }
+
+#logo { display: inline; float: left; padding-top: 22px; width: 258px; font-size: 0; line-height: 0; }
+#logo a { display: block; width: 258px; height: 56px; text-indent: -4000px; background: url(/assets/logo.png) no-repeat 0 0;  }
+
+#navigation-bar { position: relative; z-index: 20; padding-left: 6px; margin-top:-20px; height: 50px; background-color: black}
+#navigation-bar ul li { position: relative; list-style: none; display: inline; float: left; line-height: 48px; text-transform: uppercase; }
+#navigation-bar ul li { font-family: 'Trebuchet MS', arial, sans-serif; font-size: 16px; text-shadow: 0 -1px #000; }
+#navigation-bar ul li a { position: relative; display: block; padding: 0 32px 0 20px; float: left; color: #fff; }
+#navigation-bar ul li a:hover { color: #a5e80e; text-decoration: none; }
+
+#footer { position: relative; margin-left: -4px; padding-bottom: 16px; width: 943px; min-height: 343px; }
+
+
+section {
+    font-size: 120%;
+    padding: 20px;
+}
+
+section h1 {
+    font-size: 200%;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.round {
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+
+/* Links */
+a {
+    color: #333333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:hover{
+    text-decoration: underline;
+}
