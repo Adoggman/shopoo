@@ -3,7 +3,7 @@ class CreatePromos < ActiveRecord::Migration
     create_table :promos do |t|
       t.string :code
       t.references :item
-      t.decimal :discount
+      t.decimal :discount, :scale => 2
 
       t.timestamps
     end

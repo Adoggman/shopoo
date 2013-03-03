@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20130302231112) do
   end
 
   create_table "items", :force => true do |t|
+    t.string   "name"
     t.decimal  "cost"
     t.string   "description"
     t.integer  "stock"
