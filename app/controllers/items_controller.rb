@@ -1,7 +1,4 @@
 class ItemsController < ApplicationController
-  def browse
-    @items = Item.all
-  end
 
   def new
     @item = Item.new
@@ -16,6 +13,20 @@ class ItemsController < ApplicationController
     end
   end
 
+  def browse
+    @items = Item.all
+  end
+
   def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    if @item.update_attributes(params[:item])
+      redirect_to :action => :browse
+    else
+      render 'edit'
+    end
   end
 end

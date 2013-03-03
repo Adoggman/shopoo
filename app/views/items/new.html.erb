@@ -1,6 +1,7 @@
+<div style="text-align: center">
 <h1>Items#new</h1>
 <p>Find me in app/views/items/new.html.erb</p>
-<%= form_for(@item) do |f| %>
+<%= form_for @item do |f| %>
     <%= f.label :name %>:
     <%= f.text_field :name %><br />
 
@@ -14,4 +15,5 @@
     <%= f.text_field :url %><br />
 
     <%= f.submit "Submit" %>
+</div>
 <% end %>
