@@ -1,0 +1,10 @@
+<h1>Items#browse</h1>
+<p>Find me in app/views/items/browse.html.erb</p>
+<% @items.each do |item| %>
+    <div style="border-style: groove; border-width: 5px;">
+        <p><%= "Item Name: #{item.name}" %></p>
+        <p><%= "Item Description: #{item.description}" %></p>
+        <p><%= "Item Cost: #{item.cost}" %></p>
+        <p><%= "Item Url: #{item.url}" %></p>
+    </div>
+<% end %>
