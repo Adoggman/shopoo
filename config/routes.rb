@@ -1,4 +1,9 @@
 Shopoo::Application.routes.draw do
+
+
+  get "item/browse"
+  get "item/new"
+  get "item/edit"
   get "cart/view"
 
   # The priority is based upon order of creation:
