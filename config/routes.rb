@@ -2,7 +2,6 @@ Shopoo::Application.routes.draw do
   resources :items
   match '/new', :to => 'items#new'
   match '/browse', :to => 'items#browse'
-  match '/edit', :to => 'items#edit'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
