@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
 
   def new
+    @title = "Add Item"
     @item = Item.new
   end
 
@@ -14,10 +15,12 @@ class ItemsController < ApplicationController
   end
 
   def browse
+    @title = "Browse"
     @items = Item.all
   end
 
   def edit
+    @title = "Edit"
     @item = Item.find(params[:id])
   end
 

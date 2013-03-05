@@ -1,4 +1,6 @@
 Shopoo::Application.routes.draw do
+  resources :users
+  match '/signup', :to => 'users#new'
   resources :items
   match '/new', :to => 'items#new'
   match '/browse', :to => 'items#browse'
