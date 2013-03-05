@@ -3,6 +3,7 @@
 # Table name: items
 #
 #  id          :integer          not null, primary key
+#  name        :string(255)
 #  cost        :decimal(, )
 #  description :string(255)
 #  stock       :integer

@@ -2,21 +2,24 @@
 #
 # Table name: users
 #
-#  id              :integer          not null, primary key
-#  firstname       :string(255)
-#  lastname        :string(255)
-#  password        :string(255)
-#  email           :string(255)
-#  billing_info_id :integer
-#  address_id      :integer
-#  cart_id         :integer
-#  admin           :boolean
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id                 :integer          not null, primary key
+#  firstname          :string(255)
+#  lastname           :string(255)
+#  encrypted_password :string(255)
+#  email              :string(255)
+#  billing_info_id    :integer
+#  address_id         :integer
+#  cart_id            :integer
+#  admin              :boolean
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  salt               :string(255)
 #
+
 require 'digest'
 
 class User < ActiveRecord::Base
+  # virtual attribute - not in database. It only exists in memory until encrypted
   attr_accessor :password
   attr_accessible :email, :firstname, :lastname, :password, :password_confirmation
   has_one :billing_info
