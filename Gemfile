@@ -1,6 +1,11 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
+gem 'execjs'
+gem 'annotate'
+gem 'heroku'
+gem 'pg'
+gem 'gravatar_image_tag'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -10,12 +15,6 @@ group :production do
   gem 'thin'
   gem 'pg'
 end
-
-gem 'execjs'
-gem 'annotate'
-gem 'heroku'
-gem 'pg'
-
 
 # Gems used only for assets and not required
 # in production environments by default.
