@@ -7,8 +7,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      #handle save
-      redirect_to root_path
+      flash[:success] = "Welcome to ShopOO!"
+      redirect_to @user
     else
       @title = "Sign Up"
       render 'new'

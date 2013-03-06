@@ -1,6 +1,6 @@
 module UsersHelper
 
-  def gravatar_for(user, options = { :size => 50})
+  def gravatar_for(user, options = { :size => 100})
     gravatar_image_tag(user.email.downcase, :alt => user.firstname,
                                             :class => 'gravatar',
                                             :gravatar => options)
