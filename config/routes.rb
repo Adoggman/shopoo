@@ -1,9 +1,13 @@
 Shopoo::Application.routes.draw do
   resources :users
+  resources :sessions, :only => [:new, :create, :destroy]
+  match '/signin', :to => 'sessions#new'
+  match '/signout', :to => 'sessions#destroy'
   match '/signup', :to => 'users#new'
   resources :items
   match '/new', :to => 'items#new'
   match '/browse', :to => 'items#browse'
+  root :to => 'items#browse'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
