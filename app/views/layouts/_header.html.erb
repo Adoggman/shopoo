@@ -20,11 +20,13 @@
     <ul>
       <li>0 items</li>
       <% if signed_in? %>
-      <li><a class="account round" title="My Account" href="#"><span></span>My Account</a></li>
+        <li><a class="account round" title="My Account" href="#"><span></span>My Account</a></li>
       <% else %>
-      <li><%= link_to "Sign in", signin_path, :class => "account round" %></li>
+        <li><a class="signin round" title="sign in" href="/signin"><span></span>Sign in </a></li>
       <% end %>
-      <li><%= link_to "Log out", signout_path, :method => :delete, :class => "account round" %></li>
+      <% if signed_in? %>
+        <li><a class="signout round" title="sign out" href="/signout"><span></span>Sign out</a></li>
+      <% end %>
       <li><a class="cart round" title="shopping cart" href="#"><span></span>shopping cart </a></li>
       <li><a class="checkout round" title="checkout" href="#">checkout<span></span></a></li>
     </ul>
