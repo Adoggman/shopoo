@@ -19,7 +19,7 @@
   <div id="account-options">
     <ul>
       <% if signed_in? %>
-          <li><%= "#{current_user.cart.items.count} items in cart" %></li>
+          <li><%= "#{pluralize(current_user.cart.items.count, "item")} in cart" %></li>
       <% else %>
           <li>Not signed in</li>
       <% end %>
