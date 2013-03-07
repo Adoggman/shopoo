@@ -10,10 +10,20 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     @cart = Cart.new
+    @shipping_address = Address.new
+    @billing_address = Address.new
+    @billing_info = BillingInfo.new
 
     if @user.save
       @cart.save
+      @shipping_address.save
+      @billing_address.save
+      @billing_info.save
       @user.update_attribute :cart_id, @cart.id
+      @user.update_attribute :address_id, @shipping_address.id
+      @user.update_attribute :billing_info_id, @billing_info.id
+      @billing_info.update_attribute :address_id, @billing_address.id
+
       sign_in @user
       flash[:success] = "Welcome to ShopOO!"
       redirect_to @user
@@ -30,10 +40,14 @@ class UsersController < ApplicationController
 
   def edit
     @title = "Edit Profile"
+    @user = User.find(params[:id])
+    @shipping_address = Address.find(@user.address_id)
+
   end
 
   def update
     @user = User.find(params[:id])
+    #@shipping_address =  Address.find(@user.address_id)
     if @user.update_attributes(params[:user])
       flash[:success] = "Profile updated."
       redirect_to @user
