@@ -5,6 +5,9 @@
         <p><%= "Item Cost: #{item.cost}" %></p>
         <p><%= "Item Url: #{item.url}" %></p>
         <%= link_to "Edit", :controller => "items", :action => "edit", :id => item.id %>
+        <% if signed_in? %>
+            <%= link_to "Add to Cart", :controller => "users", :action => "add_item", :id => item.id, :quantity => 1 %>
+        <% end %>
     </div>
 <% end %>
 <div style="clear: both"></div>

@@ -8,17 +8,22 @@
 #
 
 class Cart < ActiveRecord::Base
+  has_one :user
   has_many :cart_promos
   has_many :promos, :through =>  :cart_promos
   has_many :cart_promos
   has_many :items, :through  => :quantities
 
   def add_item(item_id, amount)
+    if Quantity.find_all_by_cart_id_and_item_id(self.id, item_id).count > 0
+        return false
+    end
     quantity = Quantity.new
-    quantity.cart_id = :id
+    quantity.cart_id = self.id.to_i
     quantity.item_id = item_id
     quantity.quantity = amount
     quantity.save
+    return true
   end
 
   def remove_item(item_id)

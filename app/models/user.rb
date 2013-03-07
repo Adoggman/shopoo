@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :firstname, :lastname, :password, :password_confirmation
   has_one :billing_info
   has_one :address
-  has_one :cart
+  belongs_to :cart
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

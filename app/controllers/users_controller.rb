@@ -45,6 +45,19 @@ class UsersController < ApplicationController
 
   end
 
+  def add_item
+    @itemid = params[:id]
+    @quantity = params[:quantity]
+    @user = current_user
+    @cart = @user.cart
+    if @cart.add_item(@itemid,@quantity)
+      flash[:success] = "Item added."
+    else
+      flash[:error] = "Item is already in cart."
+    end
+    redirect_to @user
+  end
+
   def update
     @user = User.find(params[:id])
     #@shipping_address =  Address.find(@user.address_id)
