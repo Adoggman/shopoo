@@ -9,7 +9,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
+    @cart = Cart.new
+
     if @user.save
+      @cart.save
+      @user.update_attribute :cart_id, @cart.id
       sign_in @user
       flash[:success] = "Welcome to ShopOO!"
       redirect_to @user
