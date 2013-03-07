@@ -21,10 +21,11 @@ require 'digest'
 class User < ActiveRecord::Base
   # virtual attribute - not in database. It only exists in memory until encrypted
   attr_accessor :password
-  attr_accessible :email, :firstname, :lastname, :password, :password_confirmation
+  attr_accessible :email, :firstname, :lastname, :password, :password_confirmation, :address_attributes
   has_one :billing_info
-  has_one :address
+  belongs_to :address
   belongs_to :cart
+  accepts_nested_attributes_for :address
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

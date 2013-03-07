@@ -1,5 +1,10 @@
 Shopoo::Application.routes.draw do
-  resources :users
+  resources :users do
+    collection do
+      get :update_address
+      post :update_address
+    end
+  end
   resources :sessions, :only => [:new, :create, :destroy]
   match '/signin', :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'

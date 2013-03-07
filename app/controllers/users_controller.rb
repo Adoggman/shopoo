@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   def edit
     @title = "Edit Profile"
     @user = User.find(params[:id])
-    @shipping_address = Address.find(@user.address_id)
+    @address = Address.find(@user.address_id)
 
   end
 
@@ -69,8 +69,9 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    #@shipping_address =  Address.find(@user.address_id)
+
     if @user.update_attributes(params[:user])
+      @user.build_address
       flash[:success] = "Profile updated."
       redirect_to @user
     else

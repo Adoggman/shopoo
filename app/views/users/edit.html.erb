@@ -14,6 +14,28 @@
       <%= f.label :email %><br/>
       <%= f.text_field :email %>
     </div>
+    <%= f.fields_for :address do |a| %>
+        <div class="field">
+          <%= a.label :streetaddress, "Street"%><br/>
+          <%= a.text_field :streetaddress %>
+        </div>
+        <div class="field">
+          <%= a.label :streetaddress2, "Street 2" %><br/>
+          <%= a.text_field :streetaddress2 %>
+        </div>
+        <div class="field">
+          <%= a.label :city %><br/>
+          <%= a.text_field :city %>
+        </div>
+        <div class="field">
+          <%= a.label :state %><br/>
+          <%= a.text_field :state %>
+        </div>
+        <div class="field">
+          <%= a.label :zip %><br/>
+          <%= a.text_field :zip %>
+        </div>
+    <% end %>
     <div class="field">
       <%= f.label :password %><br/>
       <%= f.password_field :password %>
