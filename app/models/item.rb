@@ -13,5 +13,6 @@
 #
 
 class Item < ActiveRecord::Base
+  has_many :quantities
   attr_accessible :name, :cost, :description, :stock, :url
 end

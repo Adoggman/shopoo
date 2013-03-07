@@ -20,8 +20,13 @@ class ItemsController < ApplicationController
   end
 
   def cart
-    @title = "Cart"
-    @items = current_user.cart.items
+    if not signed_in?
+      flash[:error] = "Please sign in or register to view your cart."
+      redirect_to '/signin'
+    else
+      @title = "Cart"
+      @items = current_user.cart.items
+    end
   end
 
   def edit

@@ -19,6 +19,15 @@ class Cart < ActiveRecord::Base
     return Quantity.find_by_cart_id_and_item_id(self.id, item_id).quantity
   end
 
+  def edit_quantity(item_id, amount)
+    if Quantity.find_all_by_cart_id_and_item_id(self.id, item_id).count == 0
+      return false
+    end
+    quantity = Quantity.find_by_cart_id_and_item_id(self.id, item_id)
+    quantity.update_column(:quantity, amount)
+    return true
+  end
+
   def add_item(item_id, amount)
     if Quantity.find_all_by_cart_id_and_item_id(self.id, item_id).count > 0
         return false
