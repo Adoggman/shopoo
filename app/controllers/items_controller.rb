@@ -19,6 +19,11 @@ class ItemsController < ApplicationController
     @items = Item.all
   end
 
+  def cart
+    @title = "Cart"
+    @items = current_user.cart.items
+  end
+
   def edit
     @title = "Edit"
     @item = Item.find(params[:id])

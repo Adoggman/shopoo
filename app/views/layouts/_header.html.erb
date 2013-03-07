@@ -18,7 +18,11 @@
   <% #Account options such as My Account, Shopping Cart, and Checkout%>
   <div id="account-options">
     <ul>
-      <li>0 items</li>
+      <% if signed_in? %>
+          <li><%= "#{current_user.cart.items.count} items in cart" %></li>
+      <% else %>
+          <li>Not signed in</li>
+      <% end %>
       <% if signed_in? %>
         <li><%= link_to current_user, :class => "account round" do %><span></span>My Account<% end %></li>
       <% else %>
@@ -27,7 +31,7 @@
       <% if signed_in? %>
           <li><%= link_to signout_path, :class => "signout round" do %><span></span>Sign out<% end %></li>
       <% end %>
-      <li><%= link_to "#", :class => "cart round" do %><span></span>Shopping Cart<% end %></li>
+      <li><%= link_to "/cart", :class => "cart round" do %><span></span>Shopping Cart<% end %></li>
       <li><%= link_to "#", :class => "checkout round" do %><span></span>Checkout<% end %></li>
     </ul>
   </div>

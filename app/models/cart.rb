@@ -10,9 +10,14 @@
 class Cart < ActiveRecord::Base
   has_one :user
   has_many :cart_promos
+  has_many :quantities
   has_many :promos, :through =>  :cart_promos
   has_many :cart_promos
   has_many :items, :through  => :quantities
+
+  def get_item_quantity(item_id)
+    return Quantity.find_by_cart_id_and_item_id(self.id, item_id).quantity
+  end
 
   def add_item(item_id, amount)
     if Quantity.find_all_by_cart_id_and_item_id(self.id, item_id).count > 0

@@ -8,6 +8,8 @@ Shopoo::Application.routes.draw do
   match '/new', :to => 'items#new'
   match '/browse', :to => 'items#browse'
   match '/add_item', :to => 'users#add_item'
+  match '/cart', :to => 'items#cart'
+  match '/remove_item', :to => 'users#remove_item'
   root :to => 'items#browse'
 
   # The priority is based upon order of creation:

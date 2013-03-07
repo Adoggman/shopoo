@@ -1,0 +1,12 @@
+<% @items.each do |item| %>
+    <div style="border-style: groove; border-width: 5px; text-align: center; width: 250px; margin-left:auto; margin-right:auto; float:left">
+      <p><%= "Item Name: #{item.name} - Quantity: #{current_user.cart.get_item_quantity(item.id)}" %></p>
+      <p><%= "Item Description: #{item.description}" %></p>
+      <p><%= "Item Cost: #{item.cost}" %></p>
+      <p><%= "Item Url: #{item.url}" %></p>
+      <% if signed_in? %>
+          <%= link_to "Remove from Cart", :controller => "users", :action => "remove_item", :id => item.id %>
+      <% end %>
+    </div>
+<% end %>
+<div style="clear: both"></div>

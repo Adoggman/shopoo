@@ -55,7 +55,16 @@ class UsersController < ApplicationController
     else
       flash[:error] = "Item is already in cart."
     end
-    redirect_to @user
+    redirect_to '/cart'
+  end
+
+  def remove_item
+    @itemid = params[:id]
+    @user = current_user
+    @cart = @user.cart
+    @cart.remove_item(@itemid)
+    flash[:success] = "Item removed."
+    redirect_to '/cart'
   end
 
   def update
