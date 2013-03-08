@@ -13,7 +13,7 @@
 #
 
 class BillingInfo < ActiveRecord::Base
-  attr_accessible :cardname, :cardnumber, :expiration, :securitycode
+  attr_accessible :cardname, :cardnumber, :expiration, :securitycode, :address_attributes
   belongs_to :address
   has_one :user
   accepts_nested_attributes_for :address

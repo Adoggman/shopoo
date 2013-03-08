@@ -58,7 +58,7 @@ class UsersController < ApplicationController
     if @billing_info.update_attributes(params[:billing_info])
       @billing_info.build_address
       flash[:success] = "Profile updated."
-      redirect_to profile_path
+      redirect_to profile_path(@user)
     else
       @title = "Edit Billing"
       render 'billing'
