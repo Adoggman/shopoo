@@ -6,7 +6,9 @@ Shopoo::Application.routes.draw do
   match '/profile/:id/edit', :to => 'users#edit', :as => 'edit_profile'
   match '/profile/:id', :to => 'users#show', :as => 'profile'
   match '/profile/:id/billing', :to => 'users#billing', :as => 'billing'
+  match '/users/all', :to => 'users#index', :as => 'all_users'
   put 'users/update_billing'
+  get 'users/index'
   resources :items
   match '/new', :to => 'items#new'
   match '/browse', :to => 'items#browse'
