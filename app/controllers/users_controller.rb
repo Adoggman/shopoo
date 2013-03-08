@@ -42,7 +42,40 @@ class UsersController < ApplicationController
     @title = "Edit Profile"
     @user = User.find(params[:id])
     @address = Address.find(@user.address_id)
+  end
 
+  def billing
+    @title = "Edit Billing"
+    @user = current_user
+    @billing_info = @user.billing_info
+    @billing_address = @billing_info.address
+  end
+
+  def update_billing
+    @user = current_user
+    @billing_info = @user.billing_info
+
+    if @billing_info.update_attributes(params[:billing_info])
+      @billing_info.build_address
+      flash[:success] = "Profile updated."
+      redirect_to profile_path
+    else
+      @title = "Edit Billing"
+      render 'billing'
+    end
+  end
+
+  def update
+    @user = User.find(params[:id])
+
+    if @user.update_attributes(params[:user])
+      @user.build_address
+      flash[:success] = "Profile updated."
+      redirect_to profile_path
+    else
+      @title = "Edit User"
+      render 'edit'
+    end
   end
 
   def add_item
@@ -67,18 +100,7 @@ class UsersController < ApplicationController
     redirect_to '/cart'
   end
 
-  def update
-    @user = User.find(params[:id])
 
-    if @user.update_attributes(params[:user])
-      @user.build_address
-      flash[:success] = "Profile updated."
-      redirect_to @user
-    else
-      @title = "Edit User"
-      render 'edit'
-    end
-  end
 
   private
 
@@ -86,6 +108,7 @@ class UsersController < ApplicationController
       deny_access unless signed_in?
     end
 
+    #make sure the profile being edited actually belongs to the current user
     def correct_user
       @user = User.find(params[:id])
       redirect_to user_path unless current_user?(@user)

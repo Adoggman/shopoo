@@ -1,0 +1,50 @@
+<h1>Edit Profile</h1>
+
+<%= form_for @billing_info, :url => url_for(:controller => 'users', :action => 'update_billing') do |f| %>
+    <%= render 'shared/errors' %>
+    <div class="field">
+      <%= f.label :cardnumber, "Card Number"%><br/>
+      <%= f.text_field :cardnumber %>
+    </div>
+    <div class="field">
+      <%= f.label :cardname, "Name as appears on card" %><br/>
+      <%= f.text_field :cardname %>
+    </div>
+    <div class="field">
+      <%= f.label :expiration %><br/>
+      <%= f.text_field :expiration %>
+    </div>
+    <div class="field">
+      <%= f.label :securitycode, "Security Code" %><br/>
+      <%= f.text_field :securitycode %>
+    </div>
+    <%= f.fields_for :address do |a| %>
+        <div class="field">
+          <%= a.label :streetaddress, "Street"%><br/>
+          <%= a.text_field :streetaddress %>
+        </div>
+        <div class="field">
+          <%= a.label :streetaddress2, "Street 2" %><br/>
+          <%= a.text_field :streetaddress2 %>
+        </div>
+        <div class="field">
+          <%= a.label :city %><br/>
+          <%= a.text_field :city %>
+        </div>
+        <div class="field">
+          <%= a.label :state %><br/>
+          <%= a.text_field :state %>
+        </div>
+        <div class="field">
+          <%= a.label :zip %><br/>
+          <%= a.text_field :zip %>
+        </div>
+    <% end %>
+    <div class="actions">
+      <%= f.submit "Update" %>
+    </div>
+<% end %>
+<div>
+  <%= gravatar_for @user %>
+  <a href="http://gravatar.com/emails">change</a>
+</div>

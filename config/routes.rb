@@ -1,14 +1,16 @@
 Shopoo::Application.routes.draw do
-  resources :users do
-    collection do
-      get :update_address
-      post :update_address
-    end
-  end
   resources :sessions, :only => [:new, :create, :destroy]
   match '/signin', :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
   match '/signup', :to => 'users#new'
+  match '/profile/:id/edit', :to => 'users#edit', :as => 'edit_profile'
+  match '/profile/:id', :to => 'users#show', :as => 'profile'
+  match '/profile/:id/billing', :to => 'users#billing', :as => 'billing_info'
+  resources :users do
+    collection do
+      post 'update_billing'
+    end
+  end
   resources :items
   match '/new', :to => 'items#new'
   match '/browse', :to => 'items#browse'

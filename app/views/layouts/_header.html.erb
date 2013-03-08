@@ -24,7 +24,7 @@
           <li>Not signed in</li>
       <% end %>
       <% if signed_in? %>
-        <li><%= link_to current_user, :class => "account round" do %><span></span>My Account<% end %></li>
+        <li><%= link_to profile_path(current_user), :class => "account round" do %><span></span>My Account<% end %></li>
       <% else %>
         <li><%= link_to signin_path, :class => "signin round" do %><span></span>Sign in<% end %></li>
       <% end %>

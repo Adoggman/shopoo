@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   # virtual attribute - not in database. It only exists in memory until encrypted
   attr_accessor :password
   attr_accessible :email, :firstname, :lastname, :password, :password_confirmation, :address_attributes
-  has_one :billing_info
+  belongs_to :billing_info
   belongs_to :address
   belongs_to :cart
   accepts_nested_attributes_for :address

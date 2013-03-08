@@ -15,4 +15,5 @@
 class Address < ActiveRecord::Base
   attr_accessible :city, :state, :streetaddress, :streetaddress2, :zip
   has_one :user
+  has_one :billing_info
 end

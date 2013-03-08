@@ -14,5 +14,7 @@
 
 class BillingInfo < ActiveRecord::Base
   attr_accessible :cardname, :cardnumber, :expiration, :securitycode
-  has_one :address
+  belongs_to :address
+  has_one :user
+  accepts_nested_attributes_for :address
 end
