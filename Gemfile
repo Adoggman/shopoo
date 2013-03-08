@@ -2,10 +2,14 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
 gem 'execjs'
-gem 'annotate'
 gem 'heroku'
 gem 'pg'
 gem 'gravatar_image_tag'
+
+group :development do
+  gem 'faker'
+  gem 'annotate'
+end
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

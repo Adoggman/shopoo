@@ -31,7 +31,7 @@ class UsersController < ApplicationController
 
       sign_in @user
       flash[:success] = "Welcome to ShopOO!"
-      redirect_to @user
+      redirect_to profile_path(@user)
     else
       @title = "Sign Up"
       render 'new'
