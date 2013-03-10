@@ -1,4 +1,10 @@
 Shopoo::Application.routes.draw do
+  get "main/home"
+
+  get "main/about"
+
+  get "main/contact"
+
   resources :sessions, :only => [:new, :create, :destroy]
   match '/signin', :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
@@ -7,14 +13,14 @@ Shopoo::Application.routes.draw do
   match '/profile/:id', :to => 'users#show', :as => 'profile'
   match '/profile/:id/billing', :to => 'users#billing', :as => 'billing'
   put 'users/update_billing'
-  resources :users, :only => [:index]
+  resources :users
   resources :items
   match '/new', :to => 'items#new'
   match '/browse', :to => 'items#browse'
   match '/add_item', :to => 'users#add_item'
   match '/cart', :to => 'items#cart'
   match '/remove_item', :to => 'users#remove_item'
-  root :to => 'items#browse'
+  root :to => 'main#home'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
