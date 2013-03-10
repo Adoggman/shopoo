@@ -4,7 +4,7 @@
   <% @items.each do |item| %>
     <div class="item-container">
       <div class="item">
-        <%=link_to( image_tag( item.url ), "#") %>
+        <%=link_to( image_tag( item.url ), view_path(item.name, item.id)) %>
         <p><%= item.name %></p>
         <p><span class="price"><%= "$#{item.cost}"%></span>
         <% if signed_in? %>

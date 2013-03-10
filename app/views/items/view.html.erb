@@ -1,0 +1,21 @@
+<header class="featured"><%= @item.name %></header>
+<div class="view-wrapper">
+<div class="left">
+    <div class="view">
+      <%=link_to( image_tag( @item.url ), view_path(@item.name, @item.id)) %>
+    </div>
+</div>
+<div class="right">
+ <div class="item-sidebar round">
+   Quantity <%= select_tag "Quantity", "<option>1</option>".html_safe %><br/>
+   <div class="add-to-cart round">
+        <%= link_to "Add to Cart", :controller => "users", :action => "add_item", :id => @item.id, :quantity => 1 %>
+   </div>
+   <p>Please note that you must be signed in to order.</p>
+ </div>
+</div>
+<div class="centered">
+   Price: <span><%= "$#{@item.cost}" %></span><br/>
+  You Save: $8%<br/>
+</div>
+</div>

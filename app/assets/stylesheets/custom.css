@@ -71,7 +71,14 @@ header h1{
 .item { padding-bottom: 2px; background: #fff; border: solid 1px #e3e3e3; height: 320px; }
 .item p { position: relative; margin-top: 4px; text-align: center; color: #333333; line-height: 12px; }
 .price {color: #ff0000;}
-/*Items*/
+.view {width: 202px; height: 320px;}
+.view img { max-width: 100%; max-height: 100%; }
+.item-sidebar { background: skyblue; padding-left: 20px; padding-right: 20px; padding-top: 10px; text-align: center; width: 220px;}
+.add-to-cart { background: greenyellow; padding-top: 5px; padding-bottom: 5px; margin-top: 5px; margin-bottom: 5px;}
+.add-to-cart:hover{ background: seagreen; color: #fff;}
+.add-to-cart a:hover {color: #fff}
+.centered span { font-size: 150%; color: #ff0000}
+/*End Items*/
 
 footer { position: relative; width: 640px; padding: 10px 150px 0 150px; background: #60BE03 url(/assets/footer-back.png) repeat-x 0 0; }
 footer h1 {font-family: "Dax Regular"; font-size: 250%; color: #000; }

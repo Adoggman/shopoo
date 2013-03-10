@@ -1,8 +1,6 @@
 Shopoo::Application.routes.draw do
-  get "main/home"
 
   get "main/about"
-
   get "main/contact"
 
   resources :sessions, :only => [:new, :create, :destroy]
@@ -20,6 +18,7 @@ Shopoo::Application.routes.draw do
   match '/add_item', :to => 'users#add_item'
   match '/cart', :to => 'items#cart'
   match '/remove_item', :to => 'users#remove_item'
+  match '/view/:name/:id', :to => 'items#view', :as => 'view'
   root :to => 'main#home'
 
   # The priority is based upon order of creation:

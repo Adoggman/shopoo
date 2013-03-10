@@ -42,4 +42,8 @@ class ItemsController < ApplicationController
       render 'edit'
     end
   end
+
+  def view
+    @item = Item.find(params[:id])
+  end
 end
