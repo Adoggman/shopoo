@@ -1,4 +1,5 @@
 <header class="featured"><%= @item.name %></header>
+<hr />
 <div class="view-wrapper">
 <div class="left">
     <div class="view">
@@ -15,7 +16,12 @@
  </div>
 </div>
 <div class="centered">
-   Price: <span><%= "$#{@item.cost}" %></span><br/>
+   Price: <span style="font-size: 150%; color: #ff0000"><%= "$#{@item.cost}" %></span><br/>
   You Save: $8%<br/>
+  <span class="in-stock">In Stock.</span><br/>
+  Ships from and sold by ShopOO.co.   <br/>
+ Product Details<br/>
+  <%= @item.description %>
+  <hr/>
 </div>
 </div>

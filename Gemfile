@@ -5,6 +5,7 @@ gem 'execjs'
 gem 'heroku'
 gem 'pg'
 gem 'gravatar_image_tag'
+gem 'will_paginate'
 
 group :development do
   gem 'faker'

@@ -64,6 +64,7 @@ header h1{
 
 /*Items*/
 .featured {font-size: 300%; color: #60BE03; }
+.in-stock {font-size: 150%; color: #60BE03; }
 .items { position: relative; margin-right: -7px; padding: 10px 0 0 10px; width: 913px; }
 .items img { max-width: 100%; max-height: 100%; }
 .item-container { position: relative; display: inline; float: left; padding: 0 26px 30px 0; width: 202px; }
@@ -77,7 +78,6 @@ header h1{
 .add-to-cart { background: greenyellow; padding-top: 5px; padding-bottom: 5px; margin-top: 5px; margin-bottom: 5px;}
 .add-to-cart:hover{ background: seagreen; color: #fff;}
 .add-to-cart a:hover {color: #fff}
-.centered span { font-size: 150%; color: #ff0000}
 /*End Items*/
 
 footer { position: relative; width: 640px; padding: 10px 150px 0 150px; background: #60BE03 url(/assets/footer-back.png) repeat-x 0 0; }
