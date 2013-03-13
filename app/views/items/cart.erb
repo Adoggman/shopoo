@@ -3,7 +3,13 @@
       <div class="item-container">
         <div class="item">
           <%=link_to( image_tag( item.url ), "#") %>
-          <p><%= "#{item.name} (#{current_user.cart.get_item_quantity(item.id)})" %></p>
+          <p><%= "#{item.name}" %></p>
+          <% @quantity = @cart.get_quantity_by_item_id(item.id) %>
+          <%= form_for @quantity, :url=>:update_quantity do |q| %>
+            <%= q.hidden_field :id  %>
+            <%= q.text_field :quantity, :style => "width:20px;"%>
+            <%= q.submit "Update Quantity", :controller => "items", :action => "update_quantity" %>
+          <% end %>
           <p><span class="price"><%= "$#{item.cost}"%></span>
             <% if signed_in? %>
                 <%= link_to "Remove from Cart", :controller => "users", :action => "remove_item", :id => item.id %>

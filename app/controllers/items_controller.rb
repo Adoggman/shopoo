@@ -25,7 +25,9 @@ class ItemsController < ApplicationController
       redirect_to '/signin'
     else
       @title = "Cart"
-      @items = current_user.cart.items
+      @user = current_user
+      @cart = @user.cart
+      @items = @cart.items
     end
   end
 
@@ -41,6 +43,16 @@ class ItemsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def update_quantity
+    @quantity = Quantity.find_by_id(params[:quantity][:id])
+    if @quantity.update_attributes(params[:quantity])
+      flash[:success] = "#{@quantity.item.name} updated."
+    else
+      flash[:error] = "Editing failed."
+    end
+    redirect_to "/cart"
   end
 
   def view
