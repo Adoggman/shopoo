@@ -102,7 +102,7 @@ class UsersController < ApplicationController
     @user = current_user
     @cart = @user.cart
     @cart.remove_item(@itemid)
-    flash[:success] = "Item removed."
+    flash[:success] = "#{Item.find(@itemid).name} removed."
     redirect_to '/cart'
   end
 

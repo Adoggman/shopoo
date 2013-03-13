@@ -32,6 +32,21 @@ class Cart < ActiveRecord::Base
     return true
   end
 
+  def get_total()
+    total = 0
+    for item in items
+      total += item.cost * get_item_quantity(item.id)
+    end
+    for promo in promos
+      if (promo.item = nil)
+        total = total * (1.0 - promo.discount)
+      elsif  items.include? promo.item
+        total -= (promo.item.cost * promo.discount)*get_item_quantity(promo.item.id)
+      end
+    end
+    return total
+  end
+
   def add_item(item_id, amount)
     if Quantity.find_all_by_cart_id_and_item_id(self.id, item_id).count > 0
         return false

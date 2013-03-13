@@ -13,4 +13,7 @@
 class Promo < ActiveRecord::Base
   attr_accessible :code, :discount
   has_one :item
+  has_one :cart_promo
+
+
 end

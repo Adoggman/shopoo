@@ -1,3 +1,6 @@
+<div>
+  <p><%= "Total: #{current_user.cart.get_total}" %><br/></p>
+</div>
 <div class="items">
   <% @items.each do |item| %>
       <div class="item-container">
