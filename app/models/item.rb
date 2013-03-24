@@ -14,5 +14,6 @@
 
 class Item < ActiveRecord::Base
   has_many :quantities
+  has_many :promos
   attr_accessible :name, :cost, :description, :stock, :url
 end

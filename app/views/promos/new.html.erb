@@ -1,0 +1,14 @@
+<div style="text-align: center">
+<%= form_for @promo do |f| %>
+    <%= f.label :code %>:
+    <%= f.text_field :code %><br />
+
+    <%= f.label :discount %>:
+    <%= f.text_field :discount %><br />
+
+    <%= f.label :item_id %>:
+    <%= f.text_field :item_id %><br />
+
+    <%= f.submit "Submit" %>
+</div>
+<% end %>

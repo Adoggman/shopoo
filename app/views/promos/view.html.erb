@@ -1,0 +1,9 @@
+<header class="featured"><%= @promo.code %></header>
+<hr />
+<div class="view-wrapper">
+<div class="centered">
+   <%= if @promo.item==nil then "Cart Promo" else "Item: #{@promo.item.name} (#{@promo.item.id})" end %><br/>
+   Discount: <span style="font-size: 150%; color: #ff0000"><%= "#{@promo.discount*100}%" %></span><br/>
+  <hr/>
+</div>
+</div>
