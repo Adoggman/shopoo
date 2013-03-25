@@ -86,7 +86,16 @@ class Cart < ActiveRecord::Base
   end
 
   def remove_promo(promo_id)
-    cart_promo = Promo.find_by_cart_id_and_promo_id(self.id, promo_id)
+    cart_promo = CartPromo.find_by_cart_id_and_promo_id(self.id, promo_id)
     cart_promo.delete
+  end
+
+  def clear
+    CartPromo.find_all_by_cart_id(self.id).each do |p|
+      p.delete
+    end
+    Quantity.find_all_by_cart_id(self.id).each do |q|
+      q.delete
+    end
   end
 end

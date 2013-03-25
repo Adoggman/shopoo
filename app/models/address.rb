@@ -16,4 +16,8 @@ class Address < ActiveRecord::Base
   attr_accessible :city, :state, :streetaddress, :streetaddress2, :zip
   has_one :user
   has_one :billing_info
+
+  def incomplete?
+    return city.nil? || city.empty? || state.nil? || state.empty? || streetaddress.nil? || streetaddress.empty? || zip.nil? || zip.empty?
+  end
 end

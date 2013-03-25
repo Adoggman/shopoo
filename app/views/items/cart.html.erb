@@ -1,5 +1,5 @@
 <div xmlns="http://www.w3.org/1999/html">
-  <p style="font-size:x-large">Total: <span style="color:red"><%= "$#{current_user.cart.get_total}" %></span><br/></p>
+  <p style="font-size:x-large">Total: <span style="color:red"><%= "$#{number_with_precision(current_user.cart.get_total, :precision => 2)}" %></span><br/></p>
 </div>
 <div class="items">
   <% @items.each do |item| %>

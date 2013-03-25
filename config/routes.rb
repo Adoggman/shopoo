@@ -13,6 +13,8 @@ Shopoo::Application.routes.draw do
   put 'users/update_billing'
   match '/cart/update_quantity', :to => 'items#update_quantity', :as => 'update_quantity'
   match '/cart/add_promo', :to => 'items#add_promo', :as => 'add_promo'
+  match '/checkout', :to => 'items#checkout'
+  match '/finalize_checkout', :to => 'items#finalize_checkout'
   resources :users
   resources :items
   resources :promos

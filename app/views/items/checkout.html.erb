@@ -1,0 +1,25 @@
+<% @items.each do |item| %>
+    <% quantity = @cart.get_item_quantity(item.id) %>
+  <p><%= "$#{quantity * item.cost} - #{item.name} (x#{quantity})" %></p>
+<% end %>
+
+<% running_total = @cart.get_total_before_promos %>
+
+<div style="font-size:13pt;color: red"><%= "Subtotal: $#{number_with_precision(running_total,:precision => 2)}" %></div><br/>
+
+<% @promos.each do |promo| %>
+    <p><% if promo.item == nil then %>
+       <%= "-$#{number_with_precision(running_total * promo.discount, :precision => 2)} - #{promo.code} (#{promo.discount*100}%)" %>
+       <% running_total = running_total - (running_total * promo.discount) %>
+    <% else %>
+        <%= "$#{number_with_precision(promo.item.cost * @cart.get_item_quantity(promo.item.id) * promo.discount, :precision => 2)} - #{promo.code} (#{promo.discount*100}%)" %>
+        <% running_total = running_total - (promo.item.cost * @cart.get_item_quantity(promo.item.id) * promo.discount) %>
+    <% end %>
+    </p>
+<% end %>
+<p><div style="font-size:12pt;color: red"><%= "Tax: $#{number_with_precision(@cart.get_total*(@tax),:precision => 2)}" %></div></p>
+<div style="font-size:15pt;color: red"><%= "Total: $#{number_with_precision(@cart.get_total*(1+@tax),:precision => 2)}" %></div>
+
+<br/>
+
+<p><%= button_to "Cancel", :controller => 'items', :action => 'cart', :method => 'get' %><%= button_to "Checkout", :controller => 'items', :action => 'finalize_checkout' %></p>

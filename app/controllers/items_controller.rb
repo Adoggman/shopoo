@@ -33,6 +33,55 @@ class ItemsController < ApplicationController
     end
   end
 
+  def checkout
+    if not signed_in?
+      flash[:error] = "Please sign in or register to view your cart."
+      redirect_to '/signin'
+    elsif current_user.billing_info.incomplete?
+      flash[:success] = "Please enter billing info then continue checking out"
+      redirect_to "/profile/#{current_user.id}/billing"
+    elsif current_user.address.incomplete?
+      flash[:success] = "Please enter shipping info then continue checking out"
+      redirect_to "/profile/#{current_user.id}/edit"
+    else
+      @title = "Checkout"
+      @user = current_user
+      @cart = @user.cart
+      @items = @cart.items.order("id").all
+      @promos = @cart.promos.order("id").all
+      @tax = 0.029
+      if @user.billing_info.address.state == "WI"
+        @tax = 0.055
+      end
+    end
+  end
+
+  def finalize_checkout
+    if not signed_in? then
+      flash[:error] = "Please sign in or register to view your cart."
+      redirect_to '/signin'
+    elsif current_user.billing_info.incomplete? then
+      flash[:success] = "Please enter billing info then continue checking out"
+      redirect_to "/profile/#{current_user.id}/billing"
+    elsif current_user.address.incomplete? then
+      flash[:success] = "Please enter shipping info then continue checking out"
+      redirect_to "/profile/#{current_user.id}/edit"
+    else
+      @title = "Finalize Checkout"
+      @user = current_user
+      @cart = @user.cart
+      @total = @cart.get_total
+      @tax = 0.029
+      if @user.billing_info.address.state == "WI"
+        @tax = 0.055
+      end
+      @total = @total * (1+@tax)
+      @cart.clear
+      flash[:success] = "Thanks for shopping #{@user.firstname}!."
+      redirect_to "/browse"
+    end
+  end
+
   def add_promo
     @promo = Promo.find_by_code(params[:promo][:code])
     if @promo == nil

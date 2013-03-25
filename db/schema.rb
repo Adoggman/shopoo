@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(:version => 20130302231112) do
   create_table "billing_infos", :force => true do |t|
     t.string   "cardnumber"
     t.string   "cardname"
-    t.date     "expiration"
+    t.string   "expiration"
     t.string   "securitycode"
     t.integer  "address_id"
     t.datetime "created_at",   :null => false
