@@ -47,6 +47,14 @@ class Cart < ActiveRecord::Base
     return total
   end
 
+  def get_total_before_promos()
+    total = 0
+    for item in items
+      total += item.cost * get_item_quantity(item.id)
+    end
+    return total
+  end
+
   def add_item(item_id, amount)
     if Quantity.find_all_by_cart_id_and_item_id(self.id, item_id).count > 0
         return false
@@ -72,8 +80,8 @@ class Cart < ActiveRecord::Base
   def add_promo(promo_code)
     promo = Promo.find_by_code(promo_code)
     cart_promo = CartPromo.new
-    cart_promo.cart_id = :id
-    cart_promo.promo_id = promo.id
+    cart_promo.cart = self
+    cart_promo.promo = promo
     cart_promo.save
   end
 
