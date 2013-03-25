@@ -14,8 +14,8 @@ Shopoo::Application.routes.draw do
   match '/cart/update_quantity', :to => 'items#update_quantity', :as => 'update_quantity'
   resources :users
   resources :items
-  match '/promos', :to => 'promos#browse'
   resources :promos
+  match '/allpromos', :to => 'promos#browse'
   match '/new', :to => 'items#new'
   match '/browse', :to => 'items#browse'
   match '/add_item', :to => 'users#add_item'
