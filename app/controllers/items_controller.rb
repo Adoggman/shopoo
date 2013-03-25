@@ -27,7 +27,7 @@ class ItemsController < ApplicationController
       @title = "Cart"
       @user = current_user
       @cart = @user.cart
-      @items = @cart.items
+      @items = @cart.items.order("id").all
     end
   end
 
