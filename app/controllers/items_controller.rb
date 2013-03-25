@@ -36,13 +36,15 @@ class ItemsController < ApplicationController
   def checkout
     if not signed_in?
       flash[:error] = "Please sign in or register to view your cart."
-      redirect_to '/signin'
+      redirect_to signin_path
     elsif current_user.billing_info.incomplete?
       flash[:success] = "Please enter billing info then continue checking out"
-      redirect_to "/profile/#{current_user.id}/billing"
+      redirect_to billing_path current_user.id
     elsif current_user.address.incomplete?
       flash[:success] = "Please enter shipping info then continue checking out"
-      redirect_to "/profile/#{current_user.id}/edit"
+      redirect_to edit_profile_path current_user.id
+    elsif current_user.cart.items.empty?
+      redirect_to root_path
     else
       @title = "Checkout"
       @user = current_user
@@ -59,13 +61,13 @@ class ItemsController < ApplicationController
   def finalize_checkout
     if not signed_in? then
       flash[:error] = "Please sign in or register to view your cart."
-      redirect_to '/signin'
+      redirect_to signin_path
     elsif current_user.billing_info.incomplete? then
       flash[:success] = "Please enter billing info then continue checking out"
-      redirect_to "/profile/#{current_user.id}/billing"
+      redirect_to billing_path current_user.id
     elsif current_user.address.incomplete? then
       flash[:success] = "Please enter shipping info then continue checking out"
-      redirect_to "/profile/#{current_user.id}/edit"
+      redirect_to edit_profile_path current_user.id
     else
       @title = "Finalize Checkout"
       @user = current_user
@@ -77,8 +79,8 @@ class ItemsController < ApplicationController
       end
       @total = @total * (1+@tax)
       @cart.clear
-      flash[:success] = "Thanks for shopping #{@user.firstname}!."
-      redirect_to "/browse"
+      flash[:success] = "Thanks for shopping #{@user.firstname}!"
+      redirect_to root_path
     end
   end
 

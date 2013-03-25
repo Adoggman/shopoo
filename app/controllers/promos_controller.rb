@@ -1,4 +1,5 @@
 class PromosController < ApplicationController
+  before_filter :check_admin
 
   def new
     @title = "Add Promo"
@@ -22,5 +23,13 @@ end
   def view
     @promo = Promo.find(params[:id])
   end
+
+  private
+
+    def check_admin
+      if !current_user.admin?
+        redirect_to root_path
+      end
+    end
 
 end
