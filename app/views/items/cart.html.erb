@@ -21,16 +21,17 @@
         </div>
       </div>
   <% end %>
-
-  <% @promos.each do |promo| %>
-      <div class="item-container">
-        <div class="item">
-            <p style="font-size: 20pt"><%= "#{promo.code}"  %></p>
-            <p style="font-size: 12pt"><%= if promo.item == nil then "Cart discount: #{promo.discount*100}%" else "#{promo.item.name} discount: #{promo.discount*100}%" end %></p>
-        </div>
-      </div>
-  <% end %>
 </div>
+ <div style="clear:both"></div>
+
+<br/>
+<h1>Promos</h1>
+<% @promos.each do |promo| %>
+    <div>
+      <p style="font-size: 20pt"><%= "#{promo.code}"  %></p>
+      <p style="font-size: 12pt"><%= if promo.item == nil then "Cart discount: #{promo.discount*100}%" else "#{promo.item.name} discount: #{promo.discount*100}%" end %></p>
+    </div>
+<% end %>
 <div>
 <%= form_for :promo, :url=>:add_promo do |p| %>
     <%= p.text_field :code %>
