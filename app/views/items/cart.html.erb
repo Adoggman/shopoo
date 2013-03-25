@@ -27,16 +27,24 @@
 <br/>
 <h1>Promos</h1>
 <% @promos.each do |promo| %>
-    <div>
-      <p style="font-size: 20pt"><%= "#{promo.code}"  %></p>
-      <p style="font-size: 12pt"><%= if promo.item == nil then "Cart discount: #{promo.discount*100}%" else "#{promo.item.name} discount: #{promo.discount*100}%" end %></p>
+    <div class="item-container">
+      <div class="promo">
+        <p><b><%= "#{promo.code}"  %></b></p>
+        <% if promo.item == nil %>
+            <p><%="Cart discount: #{promo.discount*100}%" %></p>
+        <% else %>
+            <p><%= promo.item.name %></p>
+            <p><%= "Discount: #{promo.discount*100}%" %></p>
+        <% end %>
+      </div>
     </div>
 <% end %>
+<div style="clear:both"></div>
 <div>
-<%= form_for :promo, :url=>:add_promo do |p| %>
-    <%= p.text_field :code %>
-    <%= p.submit "Add Promo", :controller => "items", :action => "add_promo" %>
-<% end %>
+    <%= form_for :promo, :url=>:add_promo do |p| %>
+        <%= p.text_field :code %>
+        <%= p.submit "Add Promo", :controller => "items", :action => "add_promo" %>
+    <% end %>
 </div>
 
 
