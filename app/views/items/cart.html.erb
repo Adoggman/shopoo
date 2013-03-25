@@ -1,4 +1,4 @@
-<div>
+<div xmlns="http://www.w3.org/1999/html">
   <p style="font-size:x-large">Total: <span style="color:red"><%= "$#{current_user.cart.get_total}" %></span><br/></p>
 </div>
 <div class="items">
@@ -21,6 +21,21 @@
         </div>
       </div>
   <% end %>
+
+  <% @promos.each do |promo| %>
+      <div class="item-container">
+        <div class="item">
+            <p style="font-size: 20pt"><%= "#{promo.code}"  %></p>
+            <p style="font-size: 12pt"><%= if promo.item == nil then "Cart discount: #{promo.discount*100}%" else "#{promo.item.name} discount: #{promo.discount*100}%" end %></p>
+        </div>
+      </div>
+  <% end %>
+</div>
+<div>
+<%= form_for :promo, :url=>:add_promo do |p| %>
+    <%= p.text_field :code %>
+    <%= p.submit "Add Promo", :controller => "items", :action => "add_promo" %>
+<% end %>
 </div>
 
 

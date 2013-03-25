@@ -28,7 +28,20 @@ class ItemsController < ApplicationController
       @user = current_user
       @cart = @user.cart
       @items = @cart.items.order("id").all
+      @promos = @cart.promos.order("id").all
+      @promo = nil
     end
+  end
+
+  def add_promo
+    @promo = Promo.find_by_code(params[:promo][:code])
+    if @promo == nil
+      flash[:error] = "Promo code not found"
+    else
+      current_user.cart.add_promo(@promo.code)
+      flash[:success] = "Promo code added to cart"
+    end
+    redirect_to "/cart"
   end
 
   def edit

@@ -12,6 +12,7 @@ Shopoo::Application.routes.draw do
   match '/profile/:id/billing', :to => 'users#billing', :as => 'billing'
   put 'users/update_billing'
   match '/cart/update_quantity', :to => 'items#update_quantity', :as => 'update_quantity'
+  match '/cart/add_promo', :to => 'items#add_promo', :as => 'add_promo'
   resources :users
   resources :items
   resources :promos
