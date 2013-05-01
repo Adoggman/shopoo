@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_filter :redirect_if_not_admin,   :only => [:new, :edit]
 
   def new
     @title = "Add Item"
@@ -122,4 +123,16 @@ class ItemsController < ApplicationController
   def view
     @item = Item.find(params[:id])
   end
+
+
+
+  private
+
+  def redirect_if_not_admin
+    if !signed_in? || !current_user.admin?
+      redirect_to root_path
+    end
+  end
+
+
 end
