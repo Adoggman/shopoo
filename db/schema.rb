@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20130302231112) do
   end
 
   create_table "billing_infos", :force => true do |t|
+    t.string   "cardtype"
     t.string   "cardnumber"
     t.string   "cardname"
     t.string   "expiration"
@@ -51,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20130302231112) do
     t.string   "name"
     t.decimal  "cost"
     t.string   "description"
+    t.string   "category"
     t.integer  "stock"
     t.string   "url"
     t.datetime "created_at",  :null => false
@@ -61,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20130302231112) do
     t.string   "code"
     t.integer  "item_id"
     t.decimal  "discount"
+    t.date     "expiration"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

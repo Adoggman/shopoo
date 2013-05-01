@@ -11,7 +11,7 @@
 #
 
 class Promo < ActiveRecord::Base
-  attr_accessible :code, :discount, :item_id
+  attr_accessible :code, :discount, :item_id, :expiration
   belongs_to :item
   has_one :cart_promo
 

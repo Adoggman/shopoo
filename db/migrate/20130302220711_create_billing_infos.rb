@@ -1,6 +1,7 @@
 class CreateBillingInfos < ActiveRecord::Migration
   def change
     create_table :billing_infos do |t|
+      t.string :cardtype
       t.string :cardnumber
       t.string :cardname
       t.string :expiration
