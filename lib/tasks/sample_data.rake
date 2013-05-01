@@ -7,36 +7,42 @@ namespace :db do
 
     Item.create(:name => "The Elder Scrolls V: Skyrim",
                 :description => "RPG",
+                :category => "Playstation",
                 :cost => 59.99,
                 :stock => 100,
                 :url => "http://videogames.techfresh.net/wp-content/uploads/2011/06/The-Elder-Scrolls-V-Skyrim-Box-Art-11.jpg")
 
     Item.create(:name => "Guild Wars 2",
                 :description => "MMORPG",
+                :category => "PC",
                 :cost => 59.99,
                 :stock => 100,
                 :url => "http://i739.photobucket.com/albums/xx35/saladin001/Guild-wars-2-white-cover.jpg")
 
     Item.create(:name => "Fifa 13",
                 :description => "Sports",
+                :category => "Playstation",
                 :cost => 39.99,
                 :stock => 100,
                 :url => "http://footballtainment.files.wordpress.com/2012/08/fifa13-cover-italy.jpg")
 
     Item.create(:name => "Halo 4",
                 :description => "Shooter",
+                :category => "Xbox",
                 :cost => 59.99,
                 :stock => 100,
                 :url => "http://images1.wikia.nocookie.net/__cb20121009145241/halo/images/a/a1/Halo-4-Box-Art.jpg")
 
     Item.create(:name => "Killzone 3",
                 :description => "Shooter",
+                :category => "Playstation",
                 :cost => 29.99,
                 :stock => 100,
                 :url => "http://mediablogs.los40.com/lanzamientos-2011/files/2011/01/killzone-3-cover.jpg")
 
     Item.create(:name => "Assassin's Creed 3",
                 :description => "Action",
+                :category => "Playstation",
                 :cost => 59.99,
                 :stock => 100,
                 :url => "http://cdn.slashgear.com/wp-content/uploads/2012/03/42135310150594294428068611916306791026801864215996n.jpg")
