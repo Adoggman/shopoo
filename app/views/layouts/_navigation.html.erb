@@ -1,12 +1,12 @@
 <div id="navigation-bar" class="round">
   <ul>
     <li><a href="/">Home</a></li>
-    <li><a href="#">Playstation 3</a></li>
-    <li><a href="#">Xbox 360</a></li>
-    <li><a href="#">PC</a></li>
-    <li><a href="#">Wii U</a></li>
-    <li><a href="#">3DS</a></li>
-    <li><a href="#">PS Vita</a></li>
+    <li><%= link_to "Playstation 3", {:action=>"browse", :controller=>"items", :category=>"ps3"} %></li>
+    <li><%= link_to "Xbox 360", {:action=>"browse", :controller=>"items", :category=>"xbox360"} %></li>
+    <li><%= link_to "PC", {:action=>"browse", :controller=>"items", :category=>"pc"} %></li>
+    <li><%= link_to "Wii U", {:action=>"browse", :controller=>"items", :category=>"wiiu"} %></li>
+    <li><%= link_to "Nintendo 3DS", {:action=>"browse", :controller=>"items", :category=>"3ds"} %></li>
+    <li><%= link_to "PS Vita", {:action=>"browse", :controller=>"items", :category=>"vita"} %></li>
   </ul>
   <div style="clear:both"></div>
 </div>

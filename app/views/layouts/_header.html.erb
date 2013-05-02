@@ -2,11 +2,10 @@
   <div id="search">
     <% #Search Container which holds search bar and advanced search %>
     <div class="search-container">
-        <form action="" method="post">
-          <input type="text" class="field" value="Keywords" title="Keywords" />
-          <input type="submit" value="" class="submit-button" />
-        </form>
-      <a class="advanced-search" title="Advanced Search" href="#">Advanced Search</a>
+        <%= form_tag(:action=>"browse", :controller=>"items") do %>
+          <%= text_field_tag :query, params[:query], :class=>'field' %>
+          <%= submit_tag '', :class=>"submit-button" %>
+        <% end %>
       <div style="clear:both"></div>
     </div>
   </div>

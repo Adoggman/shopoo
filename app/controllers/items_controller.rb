@@ -17,7 +17,13 @@ class ItemsController < ApplicationController
 
   def browse
     @title = "Browse"
-    @items = Item.all
+    if !params[:query].nil?
+      query = params[:query].downcase
+      @items = Item.find(:all, :conditions=> ['LOWER(name) LIKE ? or LOWER(category) LIKE ?', '%' + query+ '%', '%' + query + '%'])
+    else
+      category = params[:category]
+      @items = Item.find_all_by_category(category)
+    end
   end
 
   def cart
