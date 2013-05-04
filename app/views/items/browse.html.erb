@@ -7,7 +7,9 @@
           <p><span class="price"><%= "$#{item.cost}"%></span>
             <% if signed_in? %>
                 <%= link_to "Add to Cart", :controller => "users", :action => "add_item", :id => item.id, :quantity => 1 %>
-                <%= link_to "Edit", :controller => "items", :action => "edit", :id => item.id %>
+                <% if current_user.admin? %>
+                   <%= link_to "Edit", :controller => "items", :action => "edit", :id => item.id %>
+                <% end %>
             <% end %>
           </p>
         </div>

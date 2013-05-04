@@ -2,7 +2,7 @@
   <tr>
     <td class="main">
       <h1>
-        <%= gravatar_for @user %>
+        <%= gravatar_for @user, :size=>150 %>
         <%= "#{@user.firstname} #{@user.lastname}" %>
       </h1>
     </td>
@@ -10,7 +10,12 @@
       <strong>Name</strong><%= " #{@user.firstname} #{@user.lastname}" %><br/>
       <strong>URL</strong> <%= link_to user_path(@user), @user %><br/><br/><br/><br/><br/>
       <%= link_to "Edit Profile", edit_profile_path(@user) %>
+      <br/>
       <%= link_to "Edit Billing", billing_path(@user) %>
+      <br/>
+      <% if current_user.admin? %>
+        <%= link_to "Admin Options", "#" %>
+      <% end %>
     </td>
   </tr>
 </table>

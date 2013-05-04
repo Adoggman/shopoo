@@ -1,5 +1,9 @@
-<h1>Edit Profile</h1>
+<div style="text-align: center">
+  <h1>Edit Profile and Shipping Information</h1>
+</div>
 
+
+<div style="float:left; margin-left:100px">
 <%= form_for(@user) do |f| %>
     <%= render 'shared/errors' %>
     <div class="field">
@@ -48,7 +52,10 @@
       <%= f.submit "Update" %>
     </div>
 <% end %>
-<div>
-    <%= gravatar_for @user %>
-    <a href="http://gravatar.com/emails">change</a>
+</div>
+<div style="float:right; margin-right:200px; margin-top: 50px">
+    <%= gravatar_for @user, :size=>200 %>  <br/>
+    <a href="http://gravatar.com/emails">Change Your Gravatar!</a>
+    <br/><br/> <br/> <br/>
+    <%= link_to ">> Edit Billing", billing_path(@user)%>
 </div>
