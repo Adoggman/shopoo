@@ -2,6 +2,7 @@ Shopoo::Application.routes.draw do
 
   get "main/about"
   get "main/contact"
+  match '/admin', :to => 'main#admin'
 
   resources :sessions, :only => [:new, :create, :destroy]
   match '/signin', :to => 'sessions#new'

@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_filter :authenticate, :only => [:edit, :update, :index, :destroy]
-  before_filter :correct_user, :only => [:edit, :update]
   before_filter :admin_user,   :only => :destroy
 
   def index
@@ -52,7 +51,7 @@ class UsersController < ApplicationController
 
   def billing
     @title = "Edit Billing"
-    @user = current_user
+    @user = User.find(params[:id])
     @billing_info = @user.billing_info
     @billing_address = @billing_info.address
   end
@@ -117,12 +116,6 @@ class UsersController < ApplicationController
 
     def authenticate
       deny_access unless signed_in?
-    end
-
-    #make sure the profile being edited actually belongs to the current user
-    def correct_user
-      @user = User.find(params[:id])
-      redirect_to user_path unless current_user?(@user)
     end
 
     def admin_user

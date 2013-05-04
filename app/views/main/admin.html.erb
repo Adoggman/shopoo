@@ -1,0 +1,32 @@
+<div class="centered">
+  <h1>Administrator Options</h1>
+</div>
+
+
+<table>
+  <tr>
+    <td style="width:300px">
+      <div>
+        <%= gravatar_for @user, :size=>200 %>  <br/>
+        Welcome back <%= @user.firstname %>!
+      </div>
+    </td>
+    <td style="font-size: large">
+      <ul>
+        <li>
+          <%= link_to "Add New Item", new_item_path %> <br/>
+        </li>
+        <li>
+          <%= link_to "Add New Promo", new_promo_path %> <br/>
+        </li>
+        <li>
+          <%= link_to "View/Delete Users", users_path %> <br/>
+        </li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+
+
+
