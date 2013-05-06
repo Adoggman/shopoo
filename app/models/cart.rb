@@ -19,7 +19,12 @@ class Cart < ActiveRecord::Base
   after_initialize :set_defaults
 
   def get_item_quantity(item_id)
-    return Quantity.find_by_cart_id_and_item_id(self.id, item_id).quantity
+    q = Quantity.find_by_cart_id_and_item_id(self.id, item_id)
+    if (q==nil) then
+      return 0
+    else
+      return q.quantity
+    end
   end
 
   def get_quantity_by_item_id(item_id)

@@ -19,7 +19,6 @@ class BillingInfo < ActiveRecord::Base
   accepts_nested_attributes_for :address
 
   def incomplete?
-    #add cardtype.nil? || cardtype.empty? ||
-    return cardname.nil? || cardname.empty? || cardnumber.nil? || cardnumber.empty? || expiration.nil? || expiration.empty? || securitycode.nil? || securitycode.empty? || address.nil? || address.incomplete?
+    return cardtype.nil? || cardtype.empty? || cardname.nil? || cardname.empty? || cardnumber.nil? || cardnumber.empty? || expiration.nil? || expiration.empty? || securitycode.nil? || securitycode.empty? || address.nil? || address.incomplete?
   end
 end

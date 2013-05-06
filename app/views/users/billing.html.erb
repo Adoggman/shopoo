@@ -6,7 +6,7 @@
     <%= render 'shared/errors' %>
     <div class="field">
       <%= f.label :cardtype, "Card Type"%><br/>
-      <%= f.text_field :cardtype %>
+      <%= f.select :cardtype, [['Visa','Visa'],['American Express','American Express'],['Discover','Discover'], ['Mastercard','Mastercard']] %>
     </div>
     <div class="field">
       <%= f.label :cardnumber, "Card Number"%><br/>
