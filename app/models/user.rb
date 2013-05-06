@@ -74,7 +74,7 @@ class User < ActiveRecord::Base
   end
 
   def get_orders
-    orders = Cart.find_all_by_user_id_and_active(self.id,false)
+    orders = Cart.find_all_by_user_id(self.id)
     orders.delete_if { |x| x.order_date.nil?}
     return orders
   end
