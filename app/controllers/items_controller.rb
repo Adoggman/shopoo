@@ -96,8 +96,11 @@ class ItemsController < ApplicationController
     if @promo == nil
       flash[:error] = "Promo code not found"
     else
-      current_user.cart.add_promo(@promo.code)
-      flash[:success] = "Promo code added to cart"
+      if (current_user.cart.add_promo(@promo.code) )
+        flash[:success] = "Promo code added to cart"
+      else
+        flash[:error] = "That promo has expired"
+      end
     end
     redirect_to "/cart"
   end

@@ -15,5 +15,8 @@ class Promo < ActiveRecord::Base
   belongs_to :item
   has_one :cart_promo
 
+  def is_valid_promo?
+    return expiration.nil? || DateTime.now < self.expiration
+  end
 
 end
