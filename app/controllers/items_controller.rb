@@ -85,7 +85,7 @@ class ItemsController < ApplicationController
         @tax = 0.055
       end
       @total = @total * (1+@tax)
-      @cart.clear
+      @user.checkout
       flash[:success] = "Thanks for shopping #{@user.firstname}!"
       redirect_to root_path
     end

@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(:version => 20130302231112) do
   end
 
   create_table "carts", :force => true do |t|
+    t.integer  "user_id"
+    t.datetime "order_date"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -86,7 +88,6 @@ ActiveRecord::Schema.define(:version => 20130302231112) do
     t.string   "email"
     t.integer  "billing_info_id"
     t.integer  "address_id"
-    t.integer  "cart_id"
     t.boolean  "admin"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false

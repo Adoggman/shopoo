@@ -8,12 +8,15 @@
 #
 
 class Cart < ActiveRecord::Base
-  has_one :user
+
+  belongs_to :user
   has_many :cart_promos
   has_many :quantities
   has_many :promos, :through =>  :cart_promos
   has_many :cart_promos
   has_many :items, :through  => :quantities
+  attr_accessible :order_date
+  after_initialize :set_defaults
 
   def get_item_quantity(item_id)
     return Quantity.find_by_cart_id_and_item_id(self.id, item_id).quantity
@@ -90,6 +93,11 @@ class Cart < ActiveRecord::Base
     cart_promo.delete
   end
 
+  def checkout
+    self.order_date = Time.now
+    self.save
+  end
+
   def clear
     CartPromo.find_all_by_cart_id(self.id).each do |p|
       p.delete
@@ -98,4 +106,10 @@ class Cart < ActiveRecord::Base
       q.delete
     end
   end
+
+  private
+  def set_defaults
+    self.order_date = nil
+  end
+
 end

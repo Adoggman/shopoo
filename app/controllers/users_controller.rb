@@ -24,7 +24,7 @@ class UsersController < ApplicationController
       @shipping_address.save
       @billing_address.save
       @billing_info.save
-      @user.update_attribute :cart_id, @cart.id
+      @cart.update_attribute :user_id, @user.id
       @user.update_attribute :address_id, @shipping_address.id
       @user.update_attribute :billing_info_id, @billing_info.id
       @billing_info.update_attribute :address_id, @billing_address.id

@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :firstname, :lastname, :password, :password_confirmation, :address_attributes
   belongs_to :billing_info
   belongs_to :address
-  belongs_to :cart
+  has_many :carts
   accepts_nested_attributes_for :address
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -57,6 +57,26 @@ class User < ActiveRecord::Base
   def self.authenticate_with_salt(id, cookie_salt)
     user = find_by_id(id)
     (user && user.salt == cookie_salt) ? user : nil
+  end
+
+  def cart
+    return Cart.find_by_user_id_and_order_date(self.id,nil)
+  end
+
+  def checkout
+    #Gets the old cart and checks it out
+    @oc = cart
+    @oc.checkout
+    #Creates a new empty cart for the user
+    @c = Cart.new
+    @c.user = self
+    @c.save
+  end
+
+  def get_orders
+    orders = Cart.find_all_by_user_id_and_active(self.id,false)
+    orders.delete_if { |x| x.order_date.nil?}
+    return orders
   end
 
   #make all methods below private
