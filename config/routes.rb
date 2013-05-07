@@ -4,6 +4,7 @@ Shopoo::Application.routes.draw do
   get "main/contact"
   match '/admin', :to => 'main#admin'
 
+
   resources :sessions, :only => [:new, :create, :destroy]
   match '/signin', :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
@@ -11,6 +12,7 @@ Shopoo::Application.routes.draw do
   match '/profile/:id/edit', :to => 'users#edit', :as => 'edit_profile'
   match '/profile/:id', :to => 'users#show', :as => 'profile'
   match '/profile/:id/billing', :to => 'users#billing', :as => 'billing'
+  match '/orders/:id', :to => 'users#orders', :as => 'orders'
   put 'users/update_billing'
   match '/cart/update_quantity', :to => 'items#update_quantity', :as => 'update_quantity'
   match '/cart/add_promo', :to => 'items#add_promo', :as => 'add_promo'
