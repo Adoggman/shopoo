@@ -45,7 +45,7 @@ class Cart < ActiveRecord::Base
       total += item.cost * get_item_quantity(item.id)
     end
     for promo in promos
-      if (!promo.is_valid_promo?)
+      if (!promo.check_valid(self.order_date))
         next
       elsif (promo.item == nil)
         total = total * (1.0 - promo.discount)

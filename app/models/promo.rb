@@ -19,4 +19,12 @@ class Promo < ActiveRecord::Base
     return expiration.nil? || DateTime.now < self.expiration
   end
 
+  def check_valid (date)
+    if date.nil?
+      return is_valid_promo?
+    else
+      return date <= self.expiration
+    end
+  end
+
 end
