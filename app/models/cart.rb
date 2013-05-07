@@ -56,6 +56,19 @@ class Cart < ActiveRecord::Base
     return total
   end
 
+  def get_tax()
+    if self.user.billing_info.address.state == "WI"
+      @tax = 0.055
+    else
+      @tax = 0.029
+    end
+    return @tax*get_total
+  end
+
+  def get_total_and_tax
+     return get_total + get_tax
+  end
+
   def get_total_before_promos()
     total = 0
     for item in items

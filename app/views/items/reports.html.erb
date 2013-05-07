@@ -1,3 +1,7 @@
+<div style="text-align: center">
+  <h1>Reports</h1>
+</div>
+
 <%= form_tag(:action=>"reports", :controller=>"items") do %>
     Start Date: <%= select_date @startdate, :prefix => 'startdate' %>
     <br/>
@@ -6,5 +10,47 @@
     <%= submit_tag "Run report" %>
 <% end %>
 <br/><br/>
-Number of orders: <%= @count %><br/>
-Total: <%= @total %>
+
+<p style="font-size:x-large">Number of orders: <%= @count %></p>
+<p style="font-size:x-large; margin-top:-40px">Total: <%= "$#{number_with_precision(@total, :precision=>2)}" %></p>
+<hr style="height:0px;border:3px solid #666666"/> <br/>
+<% @orders.each do |order| %>
+    <p style="font-size:x-large">Date Ordered: <span style="color:red"><%= order.order_date %></span></p>
+    <p style="font-size:x-large; margin-top:-40px">Tax: <%= "$#{number_with_precision(order.get_tax, :precision => 2)}" %></p>
+    <p style="font-size:x-large; margin-top:-40px">Total: <span style="color:red"><%= "$#{number_with_precision(order.get_total_and_tax, :precision => 2)}" %></span></p>
+
+    <div class="items">
+      <% order.items.each do |item| %>
+          <div class="item-container">
+            <div class="item centered">
+              <%=link_to( image_tag( item.url ), "#") %>
+              <%= item.name %>
+              <br/>
+              <%= "Quantity: #{order.get_item_quantity(item.id)}" %>
+              <br/>
+              <p><span class="price"><%= "Unit Price: $#{item.cost}"%></span>
+            </div>
+          </div>
+      <% end %>
+      <br class="clear"/>
+
+      <% if order.promos.size > 0 %>
+          <h1>Promos</h1>
+          <% order.promos.each do |promo| %>
+              <div class="item-container">
+                <div class="promo">
+                  <p><b><%= "#{promo.code}"  %></b></p>
+                  <% if promo.item == nil %>
+                      <p><%="Cart discount: #{promo.discount*100}%" %></p>
+                  <% else %>
+                      <p><%= promo.item.name %> - <%= "Discount: #{promo.discount*100}%" %></p>
+                  <% end %>
+                  <p><%= if promo.expiration.nil? then "Never expires" else "Expires on #{promo.expiration}" end %></p>
+                </div>
+              </div>
+          <% end %>
+      <% end %>
+      <br class="clear"/>
+    </div>
+<% end %>
+<%= will_paginate @orders %>

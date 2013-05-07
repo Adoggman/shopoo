@@ -14,13 +14,22 @@ class ItemsController < ApplicationController
       params[:startdate] = Date.new(Date.today.year,1,1)
       @startdate = params[:startdate]
     else
-      @startdate = Date.new(params[:startdate][:year].to_i,params[:startdate][:month].to_i,params[:startdate][:day].to_i)
+      begin
+        @startdate = Date.parse(params[:startdate])
+      rescue
+        @startdate = Date.new(params[:startdate][:year].to_i,params[:startdate][:month].to_i,params[:startdate][:day].to_i)
+      end
+
     end
     if params[:enddate].nil? then
       params[:enddate] = Date.today
       @enddate = params[:enddate]
     else
-      @enddate = Date.new(params[:enddate][:year].to_i,params[:enddate][:month].to_i,params[:enddate][:day].to_i)
+      begin
+        @enddate = Date.parse(params[:enddate])
+      rescue
+        @enddate = Date.new(params[:enddate][:year].to_i,params[:enddate][:month].to_i,params[:enddate][:day].to_i)
+      end
     end
 
     @total = 0
@@ -30,9 +39,11 @@ class ItemsController < ApplicationController
         next
       end
       @orders.append(order)
-      @total = @total + order.get_total
+      @total = @total + (order.get_total_and_tax * 100).to_i/100.0
       @count = @count + 1
     end
+    @orders.sort_by { |x| x.order_date}
+    @orders = @orders.paginate(:page => params[:page], :per_page => 1)
   end
 
   def create
