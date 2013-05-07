@@ -16,6 +16,7 @@
 <hr style="height:0px;border:3px solid #666666"/> <br/>
 <% @orders.each do |order| %>
     <p style="font-size:x-large">Date Ordered: <span style="color:red"><%= order.order_date %></span></p>
+    <p style="font-size:x-large; margin-top:-40px">Ordered By: <span style="color:red">  <%= link_to "#{order.user.firstname} #{order.user.lastname}", profile_path(order.user) %></span></p>
     <p style="font-size:x-large; margin-top:-40px">Tax: <%= "$#{number_with_precision(order.get_tax, :precision => 2)}" %></p>
     <p style="font-size:x-large; margin-top:-40px">Total: <span style="color:red"><%= "$#{number_with_precision(order.get_total_and_tax, :precision => 2)}" %></span></p>
 
