@@ -19,10 +19,18 @@ class ItemsController < ApplicationController
     @title = "Browse"
     if !params[:query].nil?
       query = params[:query].downcase
-      @items = Item.find(:all, :conditions=> ['LOWER(name) LIKE ? or LOWER(category) LIKE ?', '%' + query+ '%', '%' + query + '%'])
-    else
+      where = ['LOWER(name) LIKE ? or LOWER(category) LIKE ?', '%' + query+ '%', '%' + query + '%']
+      @items = Item.paginate(:page => params[:page],
+                             :per_page => 8,
+                             :conditions => ['LOWER(name) LIKE ? or LOWER(category) LIKE ?', '%' + query+ '%', '%' + query + '%'])
+    elsif !params[:category].nil?
       category = params[:category]
-      @items = Item.find_all_by_category(category)
+      @items = Item.paginate(:page => params[:page],
+                             :per_page => 8,
+                             :conditions => {:category => category})
+    else
+      @items = Item.paginate(:page => params[:page],
+                             :per_page => 8)
     end
   end
 

@@ -31,7 +31,7 @@ namespace :db do
                 :category => "xbox360",
                 :cost => 59.99,
                 :stock => 100,
-                :url => "http://images1.wikia.nocookie.net/__cb20121009145241/halo/images/a/a1/Halo-4-Box-Art.jpg")
+                :url => "http://oyster.ignimgs.com/wordpress/stg.ign.com/2012/07/Halo-4-Art-Book-Cover-Awakening.jpg")
 
     Item.create(:name => "Killzone 3",
                 :description => "Shooter",
