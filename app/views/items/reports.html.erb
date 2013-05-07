@@ -1,0 +1,10 @@
+<%= form_tag(:action=>"reports", :controller=>"items") do %>
+    Start Date: <%= select_date @startdate, :prefix => 'startdate' %>
+    <br/>
+    End Date: <%= select_date @enddate, :prefix => 'enddate'%>
+    <br/>
+    <%= submit_tag "Run report" %>
+<% end %>
+<br/><br/>
+Number of orders: <%= @count %><br/>
+Total: <%= @total %>

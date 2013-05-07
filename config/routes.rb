@@ -18,6 +18,7 @@ Shopoo::Application.routes.draw do
   match '/cart/add_promo', :to => 'items#add_promo', :as => 'add_promo'
   match '/checkout', :to => 'items#checkout'
   match '/finalize_checkout', :to => 'items#finalize_checkout'
+  match '/reports', :to => 'items#reports', :as => 'reports'
   resources :users
   resources :items
   resources :promos

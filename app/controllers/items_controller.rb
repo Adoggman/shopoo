@@ -1,9 +1,38 @@
 class ItemsController < ApplicationController
-  before_filter :redirect_if_not_admin,   :only => [:new, :edit]
+  before_filter :redirect_if_not_admin,   :only => [:new, :edit, :reports]
 
   def new
     @title = "Add Item"
     @item = Item.new
+  end
+
+  def reports
+    @title = "Reports"
+    @orders = Array.new
+    @orders.delete_if { |x| x.order_date.nil?}
+    if params[:startdate].nil? then
+      params[:startdate] = Date.new(Date.today.year,1,1)
+      @startdate = params[:startdate]
+    else
+      @startdate = Date.new(params[:startdate][:year].to_i,params[:startdate][:month].to_i,params[:startdate][:day].to_i)
+    end
+    if params[:enddate].nil? then
+      params[:enddate] = Date.today
+      @enddate = params[:enddate]
+    else
+      @enddate = Date.new(params[:enddate][:year].to_i,params[:enddate][:month].to_i,params[:enddate][:day].to_i)
+    end
+
+    @total = 0
+    @count = 0
+    Cart.all.each do |order|
+      if order.order_date.nil? || order.order_date.to_date > @enddate || order.order_date.to_date < @startdate
+        next
+      end
+      @orders.append(order)
+      @total = @total + order.get_total
+      @count = @count + 1
+    end
   end
 
   def create
