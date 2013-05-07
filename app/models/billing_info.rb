@@ -18,7 +18,7 @@ class BillingInfo < ActiveRecord::Base
   has_one :user
   accepts_nested_attributes_for :address
 
-  validates :cardname,    :length      => { :maximum => 16, :minimum => 13 }
+  #validates :cardname,    :length      => { :maximum => 16, :minimum => 13 }
 
   def incomplete?
     return cardtype.nil? || cardtype.empty? || cardname.nil? || cardname.empty? || cardnumber.nil? || cardnumber.empty? || expiration.nil? || expiration.empty? || securitycode.nil? || securitycode.empty? || address.nil? || address.incomplete?
