@@ -19,6 +19,24 @@
       </div>
     <% end %>
     <br class="clear"/>
+
+    <% if order.promos.size > 0 %>
+    <h1>Promos</h1>
+    <% order.promos.each do |promo| %>
+        <div class="item-container">
+          <div class="promo">
+            <p><b><%= "#{promo.code}"  %></b></p>
+            <% if promo.item == nil %>
+                <p><%="Cart discount: #{promo.discount*100}%" %></p>
+            <% else %>
+                <p><%= promo.item.name %> - <%= "Discount: #{promo.discount*100}%" %></p>
+            <% end %>
+            <p><%= if promo.expiration.nil? then "Never expires" else "Expires on #{promo.expiration}" end %></p>
+          </div>
+        </div>
+    <% end %>
+    <% end %>
+    <br class="clear"/>
 </div>
 <% end %>
 <%= will_paginate @orders %>
