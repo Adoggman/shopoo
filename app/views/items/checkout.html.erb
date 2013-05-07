@@ -8,6 +8,7 @@
 <div style="font-size:13pt;color: red"><%= "Subtotal: $#{number_with_precision(running_total,:precision => 2)}" %></div><br/>
 
 <% @promos.each do |promo| %>
+    <% if !promo.is_valid_promo? then next end %>
     <p><% if promo.item == nil then %>
        <%= "-$#{number_with_precision(running_total * promo.discount, :precision => 2)} - #{promo.code} (#{promo.discount*100}%)" %>
        <% running_total = running_total - (running_total * promo.discount) %>

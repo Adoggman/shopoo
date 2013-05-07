@@ -8,6 +8,12 @@ class UsersController < ApplicationController
                            :per_page => 10)
   end
 
+  def orders
+    @title = "View Orders"
+    @user = User.find(params[:id])
+    @orders = @user.orders
+  end
+
   def new
     @title = "Sign Up"
     @user = User.new

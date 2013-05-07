@@ -8,20 +8,26 @@
 </div>
 <div class="right">
  <div class="item-sidebar round">
-   Quantity <%= select_tag "Quantity", "<option>1</option>".html_safe %><br/>
+   <% if signed_in? then %>
+   <%= form_tag(:action=>"add_item", :controller=>"users", :id => @item.id) do %>
+           Quantity: <%= text_field_tag :quantity, params[:quantity], :class=>'field', :value => '1' %>
    <div class="add-to-cart round">
-        <%= link_to "Add to Cart", :controller => "users", :action => "add_item", :id => @item.id, :quantity => 1 %>
+        <%= submit_tag "Add to Cart"%>
    </div>
+     <% end %>
+   <% end %>
+   <br/><br/>
    <p>Please note that you must be signed in to order.</p>
+   <br/>
  </div>
 </div>
 <div class="centered">
    Price: <span style="font-size: 150%; color: #ff0000"><%= "$#{@item.cost}" %></span><br/>
-  You Save: $8%<br/>
-  <span class="in-stock">In Stock.</span><br/>
+  <span class="in-stock"><%= "Stock: #{@item.stock}" %></span><br/>
   Ships from and sold by ShopOO.co.   <br/>
  Product Details<br/>
-  <%= @item.description %>
+  Category: <%= @item.category %><br/>
+  Description: <%= @item.description %>
   <hr/>
 </div>
 </div>

@@ -73,7 +73,7 @@ class User < ActiveRecord::Base
     @c.save
   end
 
-  def get_orders
+  def orders
     orders = Cart.find_all_by_user_id(self.id)
     orders.delete_if { |x| x.order_date.nil?}
     return orders

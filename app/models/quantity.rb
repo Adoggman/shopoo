@@ -14,4 +14,7 @@ class Quantity < ActiveRecord::Base
   belongs_to :cart
   attr_accessible :quantity
   belongs_to :item
+
+  validates :quantity,  :presence    => true,
+            :numericality      => { :greater_than_or_equal_to =>1}
 end
