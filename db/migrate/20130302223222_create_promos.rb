@@ -4,7 +4,7 @@ class CreatePromos < ActiveRecord::Migration
       t.string :code
       t.references :item
       t.decimal :discount, :scale => 2
-      t.date :expiration
+      t.datetime :expiration
 
       t.timestamps
     end

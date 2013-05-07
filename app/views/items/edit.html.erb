@@ -2,17 +2,23 @@
 <h1>Items#edit</h1>
 <p>Find me in app/views/items/edit.html.erb</p>
 <%= form_for @item do |f| %>
-    <%= f.label :name %>:
-    <%= f.text_field :name %><br />
+      <%= f.label :name %>:
+      <%= f.text_field :name %><br />
 
-    <%= f.label :description %>:
-    <%= f.text_field :description %><br />
+      <%= f.label :category %>:
+      <%= f.text_field :category %><br />
 
-    <%= f.label :cost %>:
-    <%= f.text_field :cost %><br />
+      <%= f.label :description %>:
+      <%= f.text_field :description %><br />
 
-    <%= f.label :url %>:
-    <%= f.text_field :url %><br />
+      <%= f.label :cost %>:
+      <%= f.text_field :cost %><br />
+
+      <%= f.label :stock %>:
+      <%= f.text_field :stock %><br />
+
+      <%= f.label :url %>:
+      <%= f.text_field :url %><br />
 
     <%= f.submit "Update" %>
 </div>
