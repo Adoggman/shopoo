@@ -1,5 +1,6 @@
 <%= render 'layouts/slider' %>
 <header class="featured">Featured Items</header>
+<%= will_paginate @items %>
 <div class="items">
   <% @items.each do |item| %>
     <div class="item-container">
