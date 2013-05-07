@@ -74,9 +74,7 @@ class User < ActiveRecord::Base
   end
 
   def orders
-    orders = Cart.find_all_by_user_id(self.id)
-    orders.delete_if { |x| x.order_date.nil?}
-    return orders
+    return Cart.find_all_by_user_id(self.id, :conditions => ["order_date IS NOT NULL"])
   end
 
   #make all methods below private

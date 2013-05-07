@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   def orders
     @title = "View Orders"
     @user = User.find(params[:id])
-    @orders = @user.orders
+    @orders = @user.orders.paginate(:page => params[:page], :per_page => 1)
   end
 
   def new
