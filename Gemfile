@@ -7,6 +7,7 @@ gem 'pg'
 gem 'gravatar_image_tag'
 gem 'will_paginate'
 gem 'faker'
+gem 'creditcard'
 
 group :development do
   gem 'faker'

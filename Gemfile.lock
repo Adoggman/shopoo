@@ -40,6 +40,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.5.0)
+    creditcard (1.0)
     daemons (1.1.9)
     erubis (2.7.0)
     eventmachine (1.0.0)
@@ -139,6 +140,7 @@ PLATFORMS
 DEPENDENCIES
   annotate
   coffee-rails (~> 3.2.1)
+  creditcard
   execjs
   faker
   gravatar_image_tag

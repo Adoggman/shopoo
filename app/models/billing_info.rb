@@ -12,13 +12,13 @@
 #  updated_at   :datetime         not null
 #
 
+require 'creditcard'
+
 class BillingInfo < ActiveRecord::Base
   attr_accessible :cardtype, :cardname, :cardnumber, :expiration, :securitycode, :address_attributes
   belongs_to :address
   has_one :user
   accepts_nested_attributes_for :address
-
-  #validates :cardname,    :length      => { :maximum => 16, :minimum => 13 }
 
   def incomplete?
     return cardtype.nil? || cardtype.empty? || cardname.nil? || cardname.empty? || cardnumber.nil? || cardnumber.empty? || expiration.nil? || expiration.empty? || securitycode.nil? || securitycode.empty? || address.nil? || address.incomplete?

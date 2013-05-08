@@ -67,13 +67,16 @@ class UsersController < ApplicationController
     @user = current_user
     @billing_info = @user.billing_info
 
-    if @billing_info.update_attributes(params[:billing_info])
+    card = params[:billing_info][:cardnumber]
+    isValidCard = card.creditcard?(card.creditcard_type.downcase)
+
+    if isValidCard && @billing_info.update_attributes(params[:billing_info])
       @billing_info.build_address
       flash[:success] = "Profile updated."
       redirect_to profile_path(@user)
     else
       @title = "Edit Billing"
-      render 'billing'
+      redirect_to billing_path(@user), :notice => "Invalid Card"
     end
   end
 
